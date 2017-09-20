@@ -12,7 +12,7 @@ test_idx = [0,50,100]
 train_target = np.delete(iris.target,test_idx)
 train_data = np.delete(iris.data,test_idx,axis=0)
 
-print "Data", iris.data
+print "Data", train_data
 print "Teste", test_idx
 
 test_target = iris.target[test_idx]
@@ -22,6 +22,8 @@ clf = tree.DecisionTreeClassifier()
 clf.fit(train_data,train_target)
 
 print "Resposta:",clf.predict(test_data)
+
+# print "Resposta:",clf.predict([[5.5,2.4,3.7,1.0],[5.8,	2.7	,5.1,	1.9]])
 #outra forma de criar o iris
 
 # dot_data = tree.export_graphviz(clf, out_file=None)
