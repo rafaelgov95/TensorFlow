@@ -8,8 +8,10 @@ v2 = [0,1]
 clf = tree.DecisionTreeClassifier()
 clf = clf.fit(v1,v2)
 
-
-print clf.predict([[150,0]])
+predictions= clf.predict([[150,0]])
+print predictions
+from sklearn.metrics import  accuracy_score
+print accuracy_score([0],predictions)
 
 dot_data = tree.export_graphviz(clf, out_file=None,
                          filled=True, rounded=True,
