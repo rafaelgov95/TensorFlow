@@ -52,7 +52,7 @@ flags = flags_lib
 FLAGS = flags.FLAGS
 
 flags.DEFINE_boolean("print_nodes", False, """Lists all nodes in the model.""")
-flags.DEFINE_string("input", "", """TensorFlow 'GraphDef' file to load.""")
+flags.DEFINE_string("input", "", """Estudo-TensorFlow 'GraphDef' file to load.""")
 flags.DEFINE_string("output_node_names", "",
                     """Output node names, comma separated.""")
 flags.DEFINE_string("output", "", """File to save the output graph to.""")

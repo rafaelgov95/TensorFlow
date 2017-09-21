@@ -60,7 +60,7 @@ You can replace the image_dir argument with any folder containing subfolders of
 images. The label for each image is taken from the name of the subfolder it's
 in.
 
-This produces a new model file that can be loaded and run by any TensorFlow
+This produces a new model file that can be loaded and run by any Estudo-TensorFlow
 program, for example the label_image sample code.
 
 By default this script will use the high accuracy, but comparatively large and
@@ -290,7 +290,7 @@ def run_bottleneck_on_image(sess, image_data, image_data_tensor,
   """Runs inference on an image to extract the 'bottleneck' summary layer.
 
   Args:
-    sess: Current active TensorFlow Session.
+    sess: Current active Estudo-TensorFlow Session.
     image_data: String of raw JPEG data.
     image_data_tensor: Input data layer in the graph.
     decoded_image_tensor: Output of initial image resizing and  preprocessing.
@@ -314,7 +314,7 @@ def maybe_download_and_extract(data_url):
   """Download and extract model tar file.
 
   If the pretrained model we're using doesn't already exist, this function
-  downloads it from the TensorFlow.org website and unpacks it into a directory.
+  downloads it from the Estudo-TensorFlow.org website and unpacks it into a directory.
 
   Args:
     data_url: Web location of the tar file containing the pretrained model.
@@ -386,7 +386,7 @@ def get_or_create_bottleneck(sess, image_lists, label_name, index, image_dir,
   otherwise calculate the data and save it to disk for future use.
 
   Args:
-    sess: The current active TensorFlow Session.
+    sess: The current active Estudo-TensorFlow Session.
     image_lists: Dictionary of training images for each label.
     label_name: Label string we want to get an image for.
     index: Integer offset of the image we want. This will be modulo-ed by the
@@ -450,7 +450,7 @@ def cache_bottlenecks(sess, image_lists, image_dir, bottleneck_dir,
   values, and save them off.
 
   Args:
-    sess: The current active TensorFlow Session.
+    sess: The current active Estudo-TensorFlow Session.
     image_lists: Dictionary of training images for each label.
     image_dir: Root folder string of the subfolders containing the training
     images.
@@ -492,7 +492,7 @@ def get_random_cached_bottlenecks(sess, image_lists, how_many, category,
   images from the specified category.
 
   Args:
-    sess: Current TensorFlow Session.
+    sess: Current Estudo-TensorFlow Session.
     image_lists: Dictionary of training images for each label.
     how_many: If positive, a random sample of this size will be chosen.
     If negative, all bottlenecks will be retrieved.
@@ -563,7 +563,7 @@ def get_random_distorted_bottlenecks(
   bottleneck results for each.
 
   Args:
-    sess: Current TensorFlow Session.
+    sess: Current Estudo-TensorFlow Session.
     image_lists: Dictionary of training images for each label.
     how_many: The integer number of bottleneck values to return.
     category: Name string of which set of images to fetch - training, testing,
