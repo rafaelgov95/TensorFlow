@@ -17,7 +17,7 @@ from sklearn.neighbors import KNeighborsClassifier
 my_classifier = KNeighborsClassifier()
 my_classifier.fit(X_train,y_train)
 predictions =my_classifier.predict(X_teste)
-print predictions
+print (predictions)
 
 from sklearn.metrics import  accuracy_score
-print accuracy_score(y_test,predictions)
+print (accuracy_score(y_test,predictions))
