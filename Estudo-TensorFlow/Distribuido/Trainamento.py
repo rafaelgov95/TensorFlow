@@ -10,30 +10,31 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 #
 # #Carrega o DataSet do Teste Iris.
-# iris = load_iris()
+iris = load_iris()
 # # Cria Utiliza as Cluster para processar o dado.
 cluster = tf.train.ClusterSpec({"local": [ "svgov.ddns.net:3000","35.192.227.92:3001"]})
-# #Divido os testes em Treinamento e Teste
-# X_train ,X_teste , y_train , y_test = train_test_split(iris.data,iris.target,train_size=.018)
-# print("Data de Teste\n",X_teste)
-# print("Data Traning\n", X_train)
-#
-# # Serviço sendo executado no Cluster 1
-# with tf.device("/job:local/task:1"):
-#     clf = tree.DecisionTreeClassifier()
-#     clf.fit(X_train, y_train)
-#     a=clf.predict(X_teste)
-#
-# # Serviço sendo executado no Cluster 0
-# with tf.device("/job:local/task:0"):
-#    print ('Resposta:\n', a)
-#    print ('Correto:\n', y_test)
-#    print ('Acertos: ',accuracy_score(y_test, a),'|','ESCALA: ',"'1.0 = 100%'")
+#Divido os testes em Treinamento e Teste
+X_train ,X_teste , y_train , y_test = train_test_split(iris.data,iris.target,train_size=.018)
+print("Data de Teste\n",X_teste)
+print("Data Traning\n", X_train)
+
+# Serviço sendo executado no Cluster 1
+with tf.device("/job:local/task:1"):
+    clf = tree.DecisionTreeClassifier()
+    clf.fit(X_train, y_train)
+    a=clf.predict(X_teste)
+
+# Serviço sendo executado no Cluster 0
+with tf.device("/job:local/task:0"):
+   print ('Resposta:\n', a)
+   print ('Correto:\n', y_test)
+   print ('Acertos: ',accuracy_score(y_test, a),'|','ESCALA: ',"'1.0 = 100%'")
 
 # Chamada de tf.Session()
 with tf.Session("grpc://svgov.ddns.net:3000") as sess:
     with sess.as_default():
         pass
+
         # dot_data = tree.export_graphviz(clf, out_file=None,
         #                                 feature_names=iris.feature_names,
         #                                 class_names=iris.target_names,
